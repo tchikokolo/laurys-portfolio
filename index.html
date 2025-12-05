@@ -4,298 +4,694 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Laurys Jadi Tchikokolo - Portfolio</title>
+  <meta name="description" content="Portfolio de Laurys Jadi Tchikokolo - Étudiant BTS SIO SISR - Futur Ingénieur Réseau">
+  <title>Laurys Jadi Tchikokolo - Portfolio Professionnel</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #333;
+    :root {
+      --primary: #ffb400;
+      --primary-dark: #e6a200;
+      --bg-main: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --bg-section: #333333;
+      --text-primary: #ffffff;
+      --text-secondary: #e0e0e0;
+      --header-bg: #ffb400;
+      --header-text: #1a1a1a;
+      --nav-bg: #111111;
+      --card-bg: #eeeeee;
+      --card-text: #000000;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="light"] {
+      --primary: #ffb400;
+      --primary-dark: #e6a200;
+      --bg-main: #f5f5f5;
+      --bg-secondary: #ffffff;
+      --bg-section: #ffffff;
+      --text-primary: #1a1a1a;
+      --text-secondary: #333333;
+      --header-bg: #ffb400;
+      --header-text: #1a1a1a;
+      --nav-bg: #ffffff;
+      --card-bg: #f8f9fa;
+      --card-text: #1a1a1a;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * {
       margin: 0;
       padding: 0;
-      color: #fff;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     header {
-      background-color: #ffb400;
-      color: #333;
-      padding: 20px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--header-text);
+      padding: 40px 20px;
       text-align: center;
+      box-shadow: 0 4px 20px var(--shadow);
+      position: relative;
     }
 
     header h1 {
-      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     header p {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
+      font-weight: 500;
+      opacity: 0.95;
     }
 
     nav {
-      background-color: #111;
-      color: #ffb400;
-      padding: 10px 0;
+      background-color: var(--nav-bg);
+      padding: 15px 20px;
       text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px var(--shadow);
+      backdrop-filter: blur(10px);
+      transition: background-color 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      flex: 1;
     }
 
     nav a {
-      color: #ffb400;
-      margin: 0 15px;
+      color: var(--primary);
       text-decoration: none;
-      font-size: 1.1rem;
-      transition: color 0.3s ease, transform 0.3s ease;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
     }
 
     nav a:hover {
-      text-decoration: underline;
-      transform: scale(1.1);
-      color: #fff;
+      background-color: var(--primary);
+      color: var(--header-text);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px var(--shadow);
+    }
+
+    .theme-toggle {
+      background: var(--bg-section);
+      border: 2px solid var(--primary);
+      border-radius: 25px;
+      padding: 8px 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--primary);
+      color: var(--header-text);
+      transform: scale(1.05);
+    }
+
+    .theme-icon {
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
     section {
-      padding: 30px;
-      margin: 20px;
-      background-color: #444;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: var(--bg-section);
+      padding: 40px;
+      margin: 30px 0;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px var(--shadow);
       display: none;
-      text-align: justify;
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.6s ease;
     }
 
     section.show {
+      display: block;
       opacity: 1;
       transform: translateY(0);
+      animation: fadeIn 0.6s ease;
     }
 
-    h2,
-    h3 {
-      color: #ffb400;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #111;
-      color: #ffb400;
+    h2 {
+      color: var(--primary);
+      font-size: 2.2rem;
+      margin-bottom: 25px;
+      font-weight: 700;
       position: relative;
+      padding-bottom: 15px;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
       bottom: 0;
-      width: 100%;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 2px;
+    }
+
+    h3 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin: 20px 0 15px 0;
+      font-weight: 600;
+    }
+
+    p {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .skill-card {
+      background-color: var(--card-bg);
+      color: var(--card-text);
+      padding: 30px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px var(--shadow);
+      border-color: var(--primary);
+    }
+
+    .skill-card h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
+
+    .skill-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skill-card li {
+      padding: 10px 0 10px 25px;
+      position: relative;
+      color: var(--card-text);
+      line-height: 1.6;
+    }
+
+    .skill-card li:before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2em;
     }
 
     .barre-progression {
       width: 100%;
-      background-color: #ccc;
+      background-color: var(--bg-secondary);
       border-radius: 10px;
-      height: 20px;
-      margin-top: 10px;
+      height: 25px;
+      margin: 15px 0;
       overflow: hidden;
+      box-shadow: inset 0 2px 4px var(--shadow);
     }
 
     .barre-progression div {
       height: 100%;
       border-radius: 10px;
-      background-color: #ffb400;
-      transition: width 1s ease;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+      transition: width 1.5s ease;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      color: var(--header-text);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .project-card {
+      background-color: var(--card-bg);
+      padding: 30px;
+      margin-bottom: 25px;
+      border-radius: 12px;
+      border-left: 5px solid var(--primary);
+      transition: all 0.3s ease;
+      color: var(--card-text);
+    }
+
+    .project-card:hover {
+      transform: translateX(10px);
+      box-shadow: 0 8px 20px var(--shadow);
+      border-left-width: 8px;
+    }
+
+    .project-card h3 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .project-card p {
+      color: var(--card-text);
+      opacity: 0.9;
     }
 
     .loisirs {
-      display: flex;
-      justify-content: center;
-      gap: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
       margin-top: 40px;
     }
 
     .loisir-item {
       text-align: center;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      flex: 1;
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
     }
 
     .loisir-item:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 0 15px #ffb400;
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 35px var(--shadow);
+      border-color: var(--primary);
     }
 
     .loisir-item img {
-      width: 100%; /* 100% de la largeur du conteneur */
-      height: auto; /* Laisser la hauteur s'ajuster automatiquement */
-      max-width: 300px; /* Pour que l'image ne dépasse pas une certaine largeur */
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px var(--shadow);
+    }
+
+    .loisir-item p {
+      color: var(--card-text);
+      line-height: 1.7;
     }
 
     #typewriter {
-      font-size: 2rem;
-      font-weight: bold;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--primary);
     }
 
     #cursor {
       display: inline-block;
-      color: #ffb400;
+      color: var(--primary);
       animation: blink 0.7s steps(1) infinite;
       font-weight: bold;
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
 
     @keyframes blink {
-      0%,
-      100% {
-        opacity: 1;
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .contact-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin: 5px 0;
+    }
+
+    .contact-links a:hover {
+      color: var(--primary-dark);
+      transform: translateX(5px);
+    }
+
+    .download-link {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--header-text);
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      margin: 10px 5px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 180, 0, 0.4);
+    }
+
+    .download-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 180, 0, 0.6);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: var(--nav-bg);
+      color: var(--primary);
+      margin-top: 50px;
+      box-shadow: 0 -4px 20px var(--shadow);
+    }
+
+    footer p {
+      color: var(--primary);
+      margin: 10px 0;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
       }
-      50% {
-        opacity: 0;
+
+      header p {
+        font-size: 1.1rem;
       }
+
+      nav {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      section {
+        padding: 25px;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      #typewriter {
+        font-size: 1.6rem;
+      }
+
+      .loisirs {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Laurys Jadi Tchikokolo</h1>
-    <p>Étudiant en BTS SIO - Futur Ingénieur Réseau</p>
+    <p>Étudiant en BTS SIO SISR - Futur Ingénieur Réseau</p>
   </header>
 
   <nav>
-    <a href="javascript:void(0);" onclick="toggleSection('bienvenue')">Bienvenue</a>
-    <a href="javascript:void(0);" onclick="toggleSection('competences')">Compétences</a>
-    <a href="javascript:void(0);" onclick="toggleSection('projets')">Projets</a>
-    <a href="javascript:void(0);" onclick="toggleSection('formation')">Formations</a>
-    <a href="javascript:void(0);" onclick="toggleSection('certifications')">Certifications</a>
-    <a href="javascript:void(0);" onclick="toggleSection('cv')">CV</a>
-    <a href="javascript:void(0);" onclick="toggleSection('contact')">Contact</a>
-    <a href="javascript:void(0);" onclick="toggleSection('loisirs')">Loisirs</a>
+    <div class="nav-links">
+      <a href="javascript:void(0);" onclick="toggleSection('bienvenue')">🏠 Bienvenue</a>
+      <a href="javascript:void(0);" onclick="toggleSection('competences')">💻 Compétences</a>
+      <a href="javascript:void(0);" onclick="toggleSection('projets')">📁 Projets</a>
+      <a href="javascript:void(0);" onclick="toggleSection('formation')">🎓 Formations</a>
+      <a href="javascript:void(0);" onclick="toggleSection('certifications')">📜 Certifications</a>
+      <a href="javascript:void(0);" onclick="toggleSection('cv')">📄 CV</a>
+      <a href="javascript:void(0);" onclick="toggleSection('contact')">📧 Contact</a>
+      <a href="javascript:void(0);" onclick="toggleSection('loisirs')">🎮 Loisirs</a>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Changer de thème">
+      <span class="theme-icon">🌙</span>
+      <span class="theme-text">Mode Clair</span>
+    </button>
   </nav>
 
-  <section id="bienvenue">
-    <h2><span id="typewriter"></span><span id="cursor">|</span></h2>
-    <p>
-      Je suis Laurys Jadi Tchikokolo, étudiant en BTS Services Informatiques aux Organisations (SIO). Ce portfolio présente mes compétences techniques, mes projets réalisés, ma formation, et d'autres informations sur moi. Je me forme dans ces domaines avec l'envie d'apprendre et de progresser. Curieux et motivé, je cherche à participer activement aux projets d'entreprise tout en développant mes propres idées pour améliorer mes compétences. Explorez les différentes sections pour en savoir plus !
-    </p>
-  </section>
+  <div class="container">
+    <section id="bienvenue">
+      <h2><span id="typewriter"></span><span id="cursor">|</span></h2>
+      <p>
+        Je suis Laurys Jadi Tchikokolo, étudiant en BTS Services Informatiques aux Organisations (SIO) option SISR. 
+        Ce portfolio présente mes compétences techniques, mes projets réalisés, ma formation, et d'autres informations sur moi. 
+        Je me forme dans ces domaines avec l'envie d'apprendre et de progresser. Curieux et motivé, je cherche à participer 
+        activement aux projets d'entreprise tout en développant mes propres idées pour améliorer mes compétences. 
+        Explorez les différentes sections pour en savoir plus !
+      </p>
+    </section>
 
-  <section id="competences">
-    <h2>Mes <span style="color:#ffb400;">Compétences</span> Techniques</h2>
+    <section id="competences">
+      <h2>Mes Compétences Techniques</h2>
+      
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>🖥️ Administration systèmes</h3>
+          <ul>
+            <li>Déploiement de machines virtuelles sur Proxmox (Windows Server 2022, Windows 10 Pro, Debian)</li>
+            <li>Configuration d'Active Directory (AD/DS), des unités d'organisation (OU) et des stratégies de groupe (GPO)</li>
+            <li>Gestion de serveurs d'impression</li>
+            <li>Déploiement multicast avec Fog</li>
+          </ul>
+        </div>
     
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px;">
-      <div style="flex: 1; min-width: 280px; background-color: #eee; color: #000; padding: 20px; border-radius: 10px;">
-        <h3 style="color: #ffb400;">Administration systèmes</h3>
-        <ul>
-          <li>Déploiement de machines virtuelles sur Proxmox (Windows Server 2022, Windows 10 Pro, Debian)</li>
-          <li>Configuration d’Active Directory (AD/DS), des unités d'organisation (OU) et des stratégies de groupe (GPO)</li>
-          <li>Gestion de serveurs d’impression</li>
-          <li>Déploiement multicast avec Fog</li>
-        </ul>
+        <div class="skill-card">
+          <h3>🐧 Linux</h3>
+          <ul>
+            <li>Installation et administration de serveurs Debian et services réseau</li>
+            <li>Mise en place et gestion de serveurs LAMP (Linux, Apache, MySQL, PHP)</li>
+            <li>Configuration de services : GLPI, Nextcloud, LDAP</li>
+            <li>Conteneurisation avec Docker</li>
+          </ul>
+        </div>
+    
+        <div class="skill-card">
+          <h3>🌐 Développement Web</h3>
+          <ul>
+            <li>HTML / CSS</li>
+            <li>WordPress</li>
+          </ul>
+        </div>
+        
+        <div class="skill-card">
+          <h3>📡 Réseaux & Virtualisation avancée</h3>
+          <ul>
+            <li>Simulation de réseaux avec Cisco Packet Tracer</li>
+            <li>Installation de conteneurs LXC sur Proxmox VE</li>
+            <li>Utilisation de Proxmox Backup Server (PBS) pour sauvegarder les machines virtuelles</li>
+          </ul>
+        </div>
       </div>
-  
-      <div style="flex: 1; min-width: 280px; background-color: #eee; color: #000; padding: 20px; border-radius: 10px;">
-        <h3 style="color: #ffb400;">Linux</h3>
-        <ul>
-          <li>Installation et administration de serveurs Debian et services réseau</li>
-          <li>Mise en place et gestion de serveurs LAMP (Linux, Apache, MySQL, PHP)</li>
-          <li>Configuration de services : GLPI, Nextcloud, LDAP</li>
-          <li>Conteneurisation avec Docker</li>
-        </ul>
-      </div>
-  
-      <div style="flex: 1; min-width: 280px; background-color: #eee; color: #000; padding: 20px; border-radius: 10px;">
-        <h3 style="color: #ffb400;">Développement Web</h3>
-        <ul>
-          <li>HTML / CSS</li>
-          <li>WordPress</li>
-        </ul>
+    
+      <br /><br />
+      <h3>🌍 Langues Parlées</h3>
+      <p><strong>Français</strong> : Langue maternelle</p>
+      <p><strong>Kikongo</strong> : Langue maternelle</p>
+      
+      <p style="margin-top: 20px;"><strong>Anglais</strong> : Niveau intermédiaire</p>
+      <div class="barre-progression">
+        <div style="width: 40%;">40%</div>
       </div>
       
-      <!-- Nouvelle section ajoutée ici -->
-      <div style="flex: 1; min-width: 280px; background-color: #eee; color: #000; padding: 20px; border-radius: 10px;">
-        <h3 style="color: #ffb400;">Réseaux & Virtualisation avancée</h3>
-        <ul>
-          <li>Simulation de réseaux avec Cisco Packet Tracer</li>
-          <li>Installation de conteneurs LXC sur Proxmox VE</li>
-          <li>Utilisation de Proxmox Backup Server (PBS) pour sauvegarder les machines virtuelles</li>
-        </ul>
+      <p style="margin-top: 20px;"><strong>Portugais</strong> : Niveau avancé</p>
+      <div class="barre-progression">
+        <div style="width: 60%;">60%</div>
       </div>
-    </div>
-  
-    <br /><br />
-    <h3 style="color: #ffb400;">Langues Parlées</h3>
-    <p><strong>Français</strong> : Langue maternelle</p>
-    <p><strong>Kikongo</strong> : Langue maternelle</p>
-    <p><strong>Anglais</strong> : 40%</p>
-    <div class="barre-progression">
-      <div style="width: 40%;"></div>
-    </div>
-    <p><strong>Portugais</strong> : 60%</p>
-    <div class="barre-progression">
-      <div style="width: 60%;"></div>
-    </div>
-  </section>
-  
-  
+    </section>
 
-  <section id="projets">
-    <h2>Projets Réalisés</h2>
-    <h3>Projet 1 : Installation et gestion d'un serveur Windows avec Active Directory</h3>
-    <p>Description du projet, des technologies utilisées et des objectifs atteints.</p>
-
-    <h3>Projet 2 : Serveur LAMP sur Debian pour un site web interne</h3>
-    <p>Description du projet, des technologies utilisées et des objectifs atteints.</p>
-
-    <h3>Projet 3 : Mise en place d’une solution de gestion de parc informatique avec GLPI</h3>
-    <p>Description du projet, des technologies utilisées et des objectifs atteints.</p>
-  </section>
-
-  <section id="formation">
-    <h2>Formations</h2>
-    <p><strong>BTS SIO</strong> - Spécialité SISR (Solutions d'infrastructure, systèmes et réseaux)</p>
-    <p>Baccalauréat technique F3</p>
-    <p>Brevet d'Etudes du Premier Cycle</p>
-  </section>
-
-  <section id="certifications">
-    <h2>Mes Certifications</h2>
-    <p>Télécharger mes certifications en format PDF :</p>
-    <ul>
-      <li><a href="certification_cursa.pdf" target="_blank">Télécharger la certification CURSA</a></li>
-      <li><a href="certification.pdf" target="_blank">Télécharger ma deuxième certification</a></li>
-    </ul>
-  </section>
-  
-
-  <section id="cv">
-    <h2>Mon CV</h2>
-    <p>Téléchargez mon CV en format PDF :</p>
-    <a href="cv_laurys.pdf" target="_blank">Télécharger mon CV</a>
-  </section>
-
-  <section id="contact">
-    <h2>Contact</h2>
-    <p><strong>Téléphone</strong> : <a href="tel:+33762537803">0762537803</a></p>
-    <p><strong>Email</strong> : <a href="mailto:tchikokololaurysjadi@gmail.com">tchikokololaurysjadi@gmail.com</a></p>
-    <p><strong>Instagram</strong> : <a href="https://www.instagram.com/ljk Laurys salvatore leader Nc" target="_blank">ljk Laurys salvatore leader Nc</a></p>
-    <p><strong>Telegram</strong> : <a href="https://t.me/LaurysJadiTchikokolo" target="_blank">Laurys Jadi Tchikokolo</a></p>
-  </section>
-
-  <section id="loisirs">
-    <h2>Mes Loisirs</h2>
-    <div class="loisirs">
-      <div class="loisir-item">
-        <img src="imsport.jpg" alt="Sport" />
-        <p> Je fais du sport plusieurs fois par semaine, alternant entre football, course à pied et d'autres activités physiques pour rester en forme.</p>
+    <section id="projets">
+      <h2>Projets Réalisés</h2>
+      
+      <div class="project-card">
+        <h3>🖥️ Installation et gestion d'un serveur Windows avec Active Directory</h3>
+        <p>
+          Mise en place d'un contrôleur de domaine Active Directory complet avec configuration des unités organisationnelles,
+          gestion des utilisateurs et groupes, et implémentation de stratégies de groupe (GPO) pour sécuriser et standardiser
+          l'environnement réseau. Ce projet m'a permis de comprendre l'architecture des domaines Windows et la gestion centralisée.
+        </p>
       </div>
-      <div class="loisir-item">
-        <img src="imjeux.jpg" alt="Jeux vidéos" />
-        <p> J'aime jouer à des jeux vidéo, que ce soit seul ou avec des amis. J'apprécie particulièrement les jeux d'aventure et les jeux d'équipe.</p>
+
+      <div class="project-card">
+        <h3>🐧 Serveur LAMP sur Debian pour un site web interne</h3>
+        <p>
+          Déploiement d'une infrastructure complète LAMP (Linux, Apache, MySQL, PHP) sur serveur Debian pour héberger
+          un site web interne. Configuration des services web, gestion de la base de données, et mise en place de mesures
+          de sécurité. Ce projet m'a familiarisé avec l'administration Linux et les services web.
+        </p>
       </div>
-      <div class="loisir-item">
-        <img src="immusica.jpg" alt="Musique" />
-        <p> J'aime écouter de la musique dans différents styles, que ce soit pour me détendre ou pour m'inspirer pendant mes études.</p>
+
+      <div class="project-card">
+        <h3>📊 Mise en place d'une solution de gestion de parc informatique avec GLPI</h3>
+        <p>
+          Installation et configuration de GLPI pour la gestion centralisée du parc informatique. Mise en place du système
+          de ticketing, inventaire automatisé des équipements, gestion des licences et suivi des interventions. Ce projet
+          m'a permis de découvrir les outils de gestion d'infrastructure (ITSM).
+        </p>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section id="formation">
+      <h2>Formations</h2>
+      <div class="project-card">
+        <h3>🎓 BTS SIO - Spécialité SISR</h3>
+        <p>
+          <strong>Solutions d'Infrastructure, Systèmes et Réseaux</strong><br>
+          Formation spécialisée dans l'administration des systèmes, la gestion des réseaux et la cybersécurité.
+          Acquisition de compétences en virtualisation, administration système, et gestion d'infrastructure.
+        </p>
+      </div>
+      
+      <div class="project-card">
+        <h3>📚 Baccalauréat technique F3</h3>
+        <p>Formation technique en électronique et automatisme.</p>
+      </div>
+      
+      <div class="project-card">
+        <h3>📖 Brevet d'Études du Premier Cycle (BEPC)</h3>
+        <p>Diplôme national sanctionnant la fin de l'enseignement secondaire premier cycle.</p>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <h2>Mes Certifications</h2>
+      <p style="margin-bottom: 25px;">Téléchargez mes certifications professionnelles :</p>
+      <div>
+        <a href="certification_cursa.pdf" target="_blank" class="download-link">📜 Certification CURSA</a>
+        <a href="certification.pdf" target="_blank" class="download-link">📜 Deuxième Certification</a>
+      </div>
+    </section>
+
+    <section id="cv">
+      <h2>Mon CV</h2>
+      <p style="margin-bottom: 25px;">Téléchargez mon curriculum vitae complet en format PDF :</p>
+      <a href="cv_laurys.pdf" target="_blank" class="download-link">📥 Télécharger mon CV</a>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p style="margin-bottom: 25px;">N'hésitez pas à me contacter pour toute opportunité de stage ou projet collaboratif !</p>
+      <div class="contact-links">
+        <p><strong>📱 Téléphone</strong> : <a href="tel:+33762537803">07 62 53 78 03</a></p>
+        <p><strong>📧 Email</strong> : <a href="mailto:tchikokololaurysjadi@gmail.com">tchikokololaurysjadi@gmail.com</a></p>
+        <p><strong>📸 Instagram</strong> : <a href="https://www.instagram.com/ljk_laurys_salvatore_leader_nc" target="_blank">ljk Laurys salvatore leader Nc</a></p>
+        <p><strong>💬 Telegram</strong> : <a href="https://t.me/LaurysJadiTchikokolo" target="_blank">Laurys Jadi Tchikokolo</a></p>
+      </div>
+    </section>
+
+    <section id="loisirs">
+      <h2>Mes Loisirs</h2>
+      <div class="loisirs">
+        <div class="loisir-item">
+          <img src="imsport.jpg" alt="Sport" />
+          <h3>⚽ Sport</h3>
+          <p>
+            Je fais du sport plusieurs fois par semaine, alternant entre football, course à pied et d'autres 
+            activités physiques pour rester en forme et maintenir un équilibre vie personnelle/études.
+          </p>
+        </div>
+        <div class="loisir-item">
+          <img src="imjeux.jpg" alt="Jeux vidéos" />
+          <h3>🎮 Jeux vidéos</h3>
+          <p>
+            J'aime jouer à des jeux vidéo, que ce soit seul ou avec des amis. J'apprécie particulièrement 
+            les jeux d'aventure et les jeux d'équipe qui développent la stratégie et la collaboration.
+          </p>
+        </div>
+        <div class="loisir-item">
+          <img src="immusica.jpg" alt="Musique" />
+          <h3>🎵 Musique</h3>
+          <p>
+            J'aime écouter de la musique dans différents styles, que ce soit pour me détendre ou pour 
+            m'inspirer pendant mes études. La musique est une source de motivation constante.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <footer>
-    <p>&copy; Laurys Jadi Tchikokolo - Tous droits réservés</p>
+    <p><strong>© 2024 Laurys Jadi Tchikokolo</strong> - Tous droits réservés</p>
+    <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">Portfolio hébergé sur GitHub Pages</p>
   </footer>
 
   <script>
+    // Theme Toggle Functionality
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      updateThemeButton(newTheme);
+    }
+
+    function updateThemeButton(theme) {
+      const icon = document.querySelector('.theme-icon');
+      const text = document.querySelector('.theme-text');
+      
+      if (theme === 'light') {
+        icon.textContent = '🌙';
+        text.textContent = 'Mode Sombre';
+      } else {
+        icon.textContent = '☀️';
+        text.textContent = 'Mode Clair';
+      }
+    }
+
+    // Load saved theme on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeButton(savedTheme);
+    });
+
+    // Section Toggle
     function toggleSection(sectionId) {
       var sections = document.querySelectorAll("section");
       sections.forEach(function (section) {
@@ -312,6 +708,7 @@
       }
     }
 
+    // Typewriter Effect
     const text = "Bienvenue sur mon portfolio";
     const typewriter = document.getElementById("typewriter");
     const cursor = document.getElementById("cursor");
