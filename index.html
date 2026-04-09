@@ -15,596 +15,134 @@
       --bg-section: #333333;
       --text-primary: #ffffff;
       --text-secondary: #e0e0e0;
-      --header-bg: #ffb400;
       --header-text: #1a1a1a;
       --nav-bg: #111111;
       --card-bg: #eeeeee;
       --card-text: #000000;
-      --shadow: rgba(0, 0, 0, 0.3);
+      --shadow: rgba(0,0,0,0.3);
     }
-
     [data-theme="light"] {
-      --primary: #ffb400;
-      --primary-dark: #e6a200;
       --bg-main: #f5f5f5;
       --bg-secondary: #ffffff;
       --bg-section: #ffffff;
       --text-primary: #1a1a1a;
       --text-secondary: #333333;
-      --header-bg: #ffb400;
-      --header-text: #1a1a1a;
       --nav-bg: #ffffff;
       --card-bg: #f8f9fa;
       --card-text: #1a1a1a;
-      --shadow: rgba(0, 0, 0, 0.1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background-color: var(--bg-main);
-      color: var(--text-primary);
-      line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    header {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--header-text);
-      padding: 40px 20px;
-      text-align: center;
-      box-shadow: 0 4px 20px var(--shadow);
-      position: relative;
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    header p {
-      font-size: 1.4rem;
-      font-weight: 500;
-      opacity: 0.95;
-    }
-
-    nav {
-      background-color: var(--nav-bg);
-      padding: 15px 20px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 10px var(--shadow);
-      backdrop-filter: blur(10px);
-      transition: background-color 0.3s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      flex: 1;
-    }
-
-    nav a {
-      color: var(--primary);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      padding: 10px 20px;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-    }
-
-    nav a:hover {
-      background-color: var(--primary);
-      color: var(--header-text);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px var(--shadow);
-    }
-
-    .theme-toggle {
-      background: var(--bg-section);
-      border: 2px solid var(--primary);
-      border-radius: 25px;
-      padding: 8px 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      transition: all 0.3s ease;
-    }
-
-    .theme-toggle:hover {
-      background: var(--primary);
-      color: var(--header-text);
-      transform: scale(1.05);
-    }
-
-    .theme-icon {
-      font-size: 1.2rem;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    section {
-      background-color: var(--bg-section);
-      padding: 40px;
-      margin: 30px 0;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px var(--shadow);
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.6s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h2 {
-      color: var(--primary);
-      font-size: 2.2rem;
-      margin-bottom: 25px;
-      font-weight: 700;
-      position: relative;
-      padding-bottom: 15px;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 80px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-      border-radius: 2px;
-    }
-
-    h3 {
-      color: var(--primary);
-      font-size: 1.5rem;
-      margin: 20px 0 15px 0;
-      font-weight: 600;
-    }
-
-    p {
-      color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: 15px;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-
-    .skill-card {
-      background-color: var(--card-bg);
-      color: var(--card-text);
-      padding: 30px;
-      border-radius: 12px;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-    }
-
-    .skill-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px var(--shadow);
-      border-color: var(--primary);
-    }
-
-    .skill-card h3 {
-      color: var(--primary);
-      margin-bottom: 20px;
-      font-size: 1.3rem;
-    }
-
-    .skill-card ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .skill-card li {
-      padding: 10px 0 10px 25px;
-      position: relative;
-      color: var(--card-text);
-      line-height: 1.6;
-    }
-
-    .skill-card li:before {
-      content: "▸";
-      position: absolute;
-      left: 0;
-      color: var(--primary);
-      font-weight: bold;
-      font-size: 1.2em;
-    }
-
-    .barre-progression {
-      width: 100%;
-      background-color: var(--bg-secondary);
-      border-radius: 10px;
-      height: 25px;
-      margin: 15px 0;
-      overflow: hidden;
-      box-shadow: inset 0 2px 4px var(--shadow);
-    }
-
-    .barre-progression div {
-      height: 100%;
-      border-radius: 10px;
-      background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
-      transition: width 1.5s ease;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 10px;
-      color: var(--header-text);
-      font-weight: 600;
-      font-size: 0.85rem;
-      width: 0%;
-    }
-
-    .progress-bar {
-      width: 0%;
-    }
-
-    .project-card {
-      background-color: var(--card-bg);
-      padding: 30px;
-      margin-bottom: 25px;
-      border-radius: 12px;
-      border-left: 5px solid var(--primary);
-      transition: all 0.3s ease;
-      color: var(--card-text);
-    }
-
-    .project-card:hover {
-      transform: translateX(10px);
-      box-shadow: 0 8px 20px var(--shadow);
-      border-left-width: 8px;
-    }
-
-    .project-card h3 {
-      color: var(--primary);
-      margin-bottom: 15px;
-    }
-
-    .project-card p {
-      color: var(--card-text);
-      opacity: 0.9;
-    }
-
-    .loisirs {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .loisir-item {
-      text-align: center;
-      background-color: var(--card-bg);
-      padding: 30px;
-      border-radius: 12px;
-      transition: all 0.4s ease;
-      border: 2px solid transparent;
-    }
-
-    .loisir-item:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 15px 35px var(--shadow);
-      border-color: var(--primary);
-    }
-
-    .loisir-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px var(--shadow);
-    }
-
-    .loisir-item p {
-      color: var(--card-text);
-      line-height: 1.7;
-    }
-
-    #typewriter {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--primary);
-    }
-
-    #cursor {
-      display: inline-block;
-      color: var(--primary);
-      animation: blink 0.7s steps(1) infinite;
-      font-weight: bold;
-      font-size: 2.2rem;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .contact-links a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: inline-block;
-      margin: 5px 0;
-    }
-
-    .contact-links a:hover {
-      color: var(--primary-dark);
-      transform: translateX(5px);
-    }
-
-    .download-link {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--header-text);
-      padding: 12px 30px;
-      border-radius: 30px;
-      text-decoration: none;
-      margin: 10px 5px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(255, 180, 0, 0.4);
-    }
-
-    .download-link:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(255, 180, 0, 0.6);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      background-color: var(--nav-bg);
-      color: var(--primary);
-      margin-top: 50px;
-      box-shadow: 0 -4px 20px var(--shadow);
-    }
-
-    footer p {
-      color: var(--primary);
-      margin: 10px 0;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      header p {
-        font-size: 1.1rem;
-      }
-
-      nav {
-        flex-direction: column;
-      }
-
-      .nav-links {
-        width: 100%;
-      }
-
-      section {
-        padding: 25px;
-      }
-
-      h2 {
-        font-size: 1.8rem;
-      }
-
-      #typewriter {
-        font-size: 1.6rem;
-      }
-
-      .loisirs {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Bouton retour en haut */
-    .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-      color: var(--header-text);
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(255, 180, 0, 0.4);
-      transition: all 0.3s ease;
-      z-index: 999;
-    }
-
-    .back-to-top.show {
-      display: flex;
-    }
-
-    .back-to-top:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 20px rgba(255, 180, 0, 0.6);
-    }
-
-    /* Technologies */
-    .tech-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .tech-item {
-      background-color: var(--card-bg);
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      transition: all 0.3s ease;
-      border: 2px solid transparent;
-    }
-
-    .tech-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px var(--shadow);
-      border-color: var(--primary);
-    }
-
-    .tech-item .tech-icon {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-
-    .tech-item p {
-      color: var(--card-text);
-      font-weight: 600;
-      margin: 0;
-    }
-
-    /* Timeline */
-    .timeline {
-      position: relative;
-      max-width: 800px;
-      margin: 40px auto;
-    }
-
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 4px;
-      background: var(--primary);
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -2px;
-    }
-
-    .timeline-item {
-      padding: 10px 40px;
-      position: relative;
-      background-color: inherit;
-      width: 50%;
-    }
-
-    .timeline-item::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      right: -10px;
-      background-color: var(--primary);
-      border: 4px solid var(--bg-section);
-      top: 15px;
-      border-radius: 50%;
-      z-index: 1;
-    }
-
-    .timeline-item:nth-child(odd) {
-      left: 0;
-    }
-
-    .timeline-item:nth-child(even) {
-      left: 50%;
-    }
-
-    .timeline-item:nth-child(even)::after {
-      left: -10px;
-    }
-
-    .timeline-content {
-      padding: 20px 30px;
-      background-color: var(--card-bg);
-      position: relative;
-      border-radius: 12px;
-      border: 2px solid var(--primary);
-    }
-
-    .timeline-content h3 {
-      color: var(--primary);
-      margin-top: 0;
-      font-size: 1.2rem;
-    }
-
-    .timeline-content .date {
-      color: var(--card-text);
-      font-weight: 600;
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    .timeline-content p {
-      color: var(--card-text);
-      margin-top: 10px;
-    }
-
-    @media (max-width: 768px) {
-      .timeline::after {
-        left: 31px;
-      }
-      
-      .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-      }
-      
-      .timeline-item::after {
-        left: 21px;
-      }
-      
-      .timeline-item:nth-child(even) {
-        left: 0;
-      }
-    }
+      --shadow: rgba(0,0,0,0.1);
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg-main); color:var(--text-primary); line-height:1.6; transition:background .3s,color .3s; }
+    header { background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:var(--header-text); padding:40px 20px; text-align:center; box-shadow:0 4px 20px var(--shadow); }
+    header h1 { font-size:2.8rem; font-weight:700; margin-bottom:10px; }
+    header p { font-size:1.4rem; font-weight:500; opacity:.95; }
+    nav { background:var(--nav-bg); padding:15px 20px; text-align:center; position:sticky; top:0; z-index:100; box-shadow:0 2px 10px var(--shadow); display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:15px; transition:background .3s; }
+    .nav-links { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; flex:1; }
+    nav a { color:var(--primary); text-decoration:none; font-size:1rem; font-weight:600; padding:10px 20px; border-radius:25px; transition:all .3s; }
+    nav a:hover { background:var(--primary); color:var(--header-text); transform:translateY(-2px); box-shadow:0 4px 8px var(--shadow); }
+    .theme-toggle { background:var(--bg-section); border:2px solid var(--primary); border-radius:25px; padding:8px 18px; cursor:pointer; display:flex; align-items:center; gap:8px; font-size:.9rem; font-weight:600; color:var(--text-primary); transition:all .3s; }
+    .theme-toggle:hover { background:var(--primary); color:var(--header-text); transform:scale(1.05); }
+    .theme-icon { font-size:1.2rem; }
+    .container { max-width:1200px; margin:0 auto; padding:20px; }
+    section { background:var(--bg-section); padding:40px; margin:30px 0; border-radius:15px; box-shadow:0 8px 25px var(--shadow); }
+    h2 { color:var(--primary); font-size:2.2rem; margin-bottom:25px; font-weight:700; position:relative; padding-bottom:15px; }
+    h2::after { content:''; position:absolute; bottom:0; left:0; width:80px; height:4px; background:linear-gradient(90deg,var(--primary),var(--primary-dark)); border-radius:2px; }
+    h3 { color:var(--primary); font-size:1.5rem; margin:20px 0 15px; font-weight:600; }
+    p { color:var(--text-secondary); line-height:1.8; margin-bottom:15px; }
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:25px; margin-top:30px; }
+    .skill-card { background:var(--card-bg); color:var(--card-text); padding:30px; border-radius:12px; transition:all .3s; border:2px solid transparent; }
+    .skill-card:hover { transform:translateY(-8px); box-shadow:0 12px 30px var(--shadow); border-color:var(--primary); }
+    .skill-card h3 { color:var(--primary); margin-bottom:20px; font-size:1.3rem; }
+    .skill-card ul { list-style:none; padding:0; }
+    .skill-card li { padding:10px 0 10px 25px; position:relative; color:var(--card-text); line-height:1.6; }
+    .skill-card li:before { content:"▸"; position:absolute; left:0; color:var(--primary); font-weight:bold; font-size:1.2em; }
+    .barre-progression { width:100%; background:var(--bg-secondary); border-radius:10px; height:25px; margin:15px 0; overflow:hidden; box-shadow:inset 0 2px 4px var(--shadow); }
+    .barre-progression div { height:100%; border-radius:10px; background:linear-gradient(90deg,var(--primary),var(--primary-dark)); transition:width 1.5s ease; display:flex; align-items:center; justify-content:flex-end; padding-right:10px; color:var(--header-text); font-weight:600; font-size:.85rem; width:0%; }
+    .progress-bar { width:0%; }
+    .project-card { background:var(--card-bg); padding:30px; margin-bottom:25px; border-radius:12px; border-left:5px solid var(--primary); transition:all .3s; color:var(--card-text); }
+    .project-card:hover { transform:translateX(10px); box-shadow:0 8px 20px var(--shadow); border-left-width:8px; }
+    .project-card h3 { color:var(--primary); margin-bottom:15px; }
+    .project-card p { color:var(--card-text); opacity:.9; }
+    .loisirs { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:30px; margin-top:40px; }
+    .loisir-item { text-align:center; background:var(--card-bg); padding:30px; border-radius:12px; transition:all .4s; border:2px solid transparent; }
+    .loisir-item:hover { transform:translateY(-10px) scale(1.02); box-shadow:0 15px 35px var(--shadow); border-color:var(--primary); }
+    .loisir-item img { width:100%; height:200px; object-fit:cover; border-radius:10px; margin-bottom:20px; box-shadow:0 4px 10px var(--shadow); }
+    .loisir-item p { color:var(--card-text); line-height:1.7; }
+    #typewriter { font-size:2.2rem; font-weight:700; color:var(--primary); }
+    #cursor { display:inline-block; color:var(--primary); animation:blink .7s steps(1) infinite; font-weight:bold; font-size:2.2rem; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .contact-links a { color:var(--primary); text-decoration:none; font-weight:600; transition:all .3s; display:inline-block; margin:5px 0; }
+    .contact-links a:hover { color:var(--primary-dark); transform:translateX(5px); }
+    .download-link { display:inline-block; background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:var(--header-text); padding:12px 30px; border-radius:30px; text-decoration:none; margin:10px 5px; font-weight:600; transition:all .3s; box-shadow:0 4px 15px rgba(255,180,0,.4); }
+    .download-link:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(255,180,0,.6); }
+    footer { text-align:center; padding:30px; background:var(--nav-bg); color:var(--primary); margin-top:50px; box-shadow:0 -4px 20px var(--shadow); }
+    footer p { color:var(--primary); margin:10px 0; }
+    .back-to-top { position:fixed; bottom:30px; right:30px; background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:var(--header-text); width:50px; height:50px; border-radius:50%; border:none; cursor:pointer; font-size:1.5rem; display:none; align-items:center; justify-content:center; box-shadow:0 4px 15px rgba(255,180,0,.4); transition:all .3s; z-index:999; }
+    .back-to-top.show { display:flex; }
+    .back-to-top:hover { transform:translateY(-5px); }
+    .tech-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; margin-top:30px; }
+    .tech-item { background:var(--card-bg); padding:20px; border-radius:12px; text-align:center; transition:all .3s; border:2px solid transparent; }
+    .tech-item:hover { transform:translateY(-5px); box-shadow:0 8px 20px var(--shadow); border-color:var(--primary); }
+    .tech-item .tech-icon { font-size:3rem; margin-bottom:10px; }
+    .tech-item p { color:var(--card-text); font-weight:600; margin:0; }
+    .timeline { position:relative; max-width:800px; margin:40px auto; }
+    .timeline::after { content:''; position:absolute; width:4px; background:var(--primary); top:0; bottom:0; left:50%; margin-left:-2px; }
+    .timeline-item { padding:10px 40px; position:relative; width:50%; }
+    .timeline-item::after { content:''; position:absolute; width:20px; height:20px; right:-10px; background:var(--primary); border:4px solid var(--bg-section); top:15px; border-radius:50%; z-index:1; }
+    .timeline-item:nth-child(odd) { left:0; }
+    .timeline-item:nth-child(even) { left:50%; }
+    .timeline-item:nth-child(even)::after { left:-10px; }
+    .timeline-content { padding:20px 30px; background:var(--card-bg); border-radius:12px; border:2px solid var(--primary); }
+    .timeline-content h3 { color:var(--primary); margin-top:0; font-size:1.2rem; }
+    .timeline-content .date { color:var(--card-text); font-weight:600; font-size:.9rem; opacity:.8; }
+    .timeline-content p { color:var(--card-text); margin-top:10px; }
+    /* VEILLE */
+    .sujet-card { background:var(--card-bg); border-left:5px solid var(--primary); border-radius:12px; padding:30px; margin-bottom:30px; color:var(--card-text); transition:all .3s; }
+    .sujet-card:hover { transform:translateX(10px); box-shadow:0 8px 20px var(--shadow); }
+    .sujet-card h3 { color:var(--primary); font-size:1.4rem; margin-bottom:15px; }
+    .sujet-card p { color:var(--card-text); line-height:1.8; margin-bottom:12px; }
+    .badge-lien { display:inline-block; background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:var(--header-text); padding:7px 18px; border-radius:20px; font-weight:600; font-size:.88rem; margin-top:8px; }
+    .sources-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px; margin-top:20px; }
+    .source-item { background:var(--bg-secondary); border-radius:10px; padding:18px; border:2px solid transparent; transition:all .3s; }
+    .source-item:hover { border-color:var(--primary); transform:translateY(-4px); box-shadow:0 8px 20px var(--shadow); }
+    .source-name { color:var(--primary); font-weight:700; font-size:.95rem; margin-bottom:6px; }
+    .source-desc { color:var(--text-secondary); font-size:.85rem; line-height:1.5; margin-bottom:10px; }
+    .source-item a { color:var(--primary); font-size:.82rem; font-weight:600; text-decoration:none; }
+    .source-item a:hover { text-decoration:underline; }
+    .badge-rss { display:inline-flex; align-items:center; gap:6px; background:#e03030; color:white; font-size:.72rem; font-weight:700; padding:4px 10px; border-radius:12px; margin-left:12px; vertical-align:middle; text-transform:uppercase; letter-spacing:.05em; }
+    .badge-rss::before { content:''; display:inline-block; width:7px; height:7px; background:white; border-radius:50%; animation:bdot 1s steps(1) infinite; }
+    @keyframes bdot { 0%,100%{opacity:1} 50%{opacity:0} }
+    .rss-tabs { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+    .rss-tab { background:var(--bg-secondary); border:2px solid var(--primary); color:var(--primary); padding:10px 22px; border-radius:25px; font-weight:600; cursor:pointer; transition:all .3s; font-size:.95rem; }
+    .rss-tab.active,.rss-tab:hover { background:var(--primary); color:var(--header-text); }
+    .rss-feed { display:none; }
+    .rss-feed.active { display:block; }
+    .rss-articles { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; }
+    .article-card { background:var(--card-bg); border-radius:12px; padding:22px; color:var(--card-text); border-top:4px solid var(--primary); transition:all .3s; display:flex; flex-direction:column; gap:10px; }
+    .article-card:hover { transform:translateY(-5px); box-shadow:0 10px 25px var(--shadow); }
+    .article-source { font-size:.78rem; font-weight:700; color:var(--primary); text-transform:uppercase; letter-spacing:.05em; }
+    .article-title { font-size:.98rem; font-weight:700; color:var(--card-text); line-height:1.4; }
+    .article-desc { font-size:.86rem; color:var(--card-text); opacity:.8; line-height:1.5; flex:1; }
+    .article-date { font-size:.78rem; color:var(--card-text); opacity:.6; }
+    .article-card a.lire-plus { color:var(--primary); font-weight:600; font-size:.86rem; text-decoration:none; margin-top:4px; }
+    .article-card a.lire-plus:hover { text-decoration:underline; }
+    .rss-loading { text-align:center; padding:40px; color:var(--text-secondary); }
+    .spinner { display:inline-block; width:26px; height:26px; border:3px solid var(--bg-secondary); border-top-color:var(--primary); border-radius:50%; animation:spin .8s linear infinite; margin-right:10px; vertical-align:middle; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .rss-error { text-align:center; padding:28px; color:var(--text-secondary); background:var(--bg-secondary); border-radius:10px; border:1px dashed var(--primary); }
+    .rss-error a { color:var(--primary); font-weight:600; }
+    .last-update { font-size:.82rem; color:var(--text-secondary); margin-bottom:16px; font-style:italic; }
+    @media(max-width:768px){
+      header h1{font-size:2rem;} header p{font-size:1.1rem;}
+      nav{flex-direction:column;} .nav-links{width:100%;}
+      section{padding:25px;} h2{font-size:1.8rem;}
+      #typewriter{font-size:1.6rem;} .loisirs{grid-template-columns:1fr;}
+      .timeline::after{left:31px;} .timeline-item{width:100%;padding-left:70px;padding-right:25px;}
+      .timeline-item::after{left:21px;} .timeline-item:nth-child(even){left:0;}
+      .rss-articles{grid-template-columns:1fr;}
+    }
+    html { scroll-behavior:smooth; }
   </style>
 </head>
 <body>
@@ -624,6 +162,7 @@
       <a href="#certifications">📜 Certifications</a>
       <a href="#cv">📄 CV</a>
       <a href="#telechargements">📦 Téléchargements</a>
+      <a href="#veille">🔍 Veille Techno</a>
       <a href="#vision">🚀 Ma Vision</a>
       <a href="#contact">📧 Contact</a>
       <a href="#loisirs">🎮 Loisirs</a>
@@ -635,20 +174,14 @@
   </nav>
 
   <div class="container">
+
     <section id="bienvenue">
       <h2><span id="typewriter"></span><span id="cursor">|</span></h2>
-      <p>
-        Je suis Laurys Jadi Tchikokolo, étudiant en BTS Services Informatiques aux Organisations (SIO) option SISR. 
-        Ce portfolio présente mes compétences techniques, mes projets réalisés, ma formation, et d'autres informations sur moi. 
-        Je me forme dans ces domaines avec l'envie d'apprendre et de progresser. Curieux et motivé, je cherche à participer 
-        activement aux projets d'entreprise tout en développant mes propres idées pour améliorer mes compétences. 
-        Explorez les différentes sections pour en savoir plus !
-      </p>
+      <p>Je suis Laurys Jadi Tchikokolo, étudiant en BTS Services Informatiques aux Organisations (SIO) option SISR. Ce portfolio présente mes compétences techniques, mes projets réalisés, ma formation, et d'autres informations sur moi. Je me forme dans ces domaines avec l'envie d'apprendre et de progresser. Curieux et motivé, je cherche à participer activement aux projets d'entreprise tout en développant mes propres idées pour améliorer mes compétences. Explorez les différentes sections pour en savoir plus !</p>
     </section>
 
     <section id="competences">
       <h2>Mes Compétences Techniques</h2>
-      
       <div class="skills-grid">
         <div class="skill-card">
           <h3>🖥️ Administration systèmes</h3>
@@ -659,7 +192,6 @@
             <li>Déploiement multicast avec Fog</li>
           </ul>
         </div>
-    
         <div class="skill-card">
           <h3>🐧 Linux</h3>
           <ul>
@@ -669,7 +201,6 @@
             <li>Conteneurisation avec Docker</li>
           </ul>
         </div>
-    
         <div class="skill-card">
           <h3>🌐 Développement Web</h3>
           <ul>
@@ -677,7 +208,6 @@
             <li>WordPress</li>
           </ul>
         </div>
-        
         <div class="skill-card">
           <h3>📡 Réseaux & Virtualisation avancée</h3>
           <ul>
@@ -687,114 +217,54 @@
           </ul>
         </div>
       </div>
-    
-      <br /><br />
+      <br/><br/>
       <h3>🌍 Langues Parlées</h3>
       <p><strong>Français</strong> : Langue maternelle</p>
       <p><strong>Kikongo</strong> : Langue maternelle</p>
-      
-      <p style="margin-top: 20px;"><strong>Anglais</strong> : Niveau intermédiaire</p>
-      <div class="barre-progression">
-        <div class="progress-bar" data-progress="40">40%</div>
-      </div>
-      
-      <p style="margin-top: 20px;"><strong>Portugais</strong> : Niveau avancé</p>
-      <div class="barre-progression">
-        <div class="progress-bar" data-progress="60">60%</div>
-      </div>
-
-      <br /><br />
+      <p style="margin-top:20px"><strong>Anglais</strong> : Niveau intermédiaire</p>
+      <div class="barre-progression"><div class="progress-bar" data-progress="40">40%</div></div>
+      <p style="margin-top:20px"><strong>Portugais</strong> : Niveau avancé</p>
+      <div class="barre-progression"><div class="progress-bar" data-progress="60">60%</div></div>
+      <br/><br/>
       <h3>💪 Niveau de compétences techniques</h3>
-      
-      <p style="margin-top: 20px;"><strong>Administration Windows Server</strong></p>
-      <div class="barre-progression">
-        <div class="progress-bar" data-progress="75">75%</div>
-      </div>
-      
-      <p style="margin-top: 20px;"><strong>Administration Linux</strong></p>
-      <div class="barre-progression">
-        <div class="progress-bar" data-progress="70">70%</div>
-      </div>
-      
-      <p style="margin-top: 20px;"><strong>Réseaux & Cisco</strong></p>
-      <div class="barre-progression">
-        <div class="progress-bar" data-progress="65">65%</div>
-      </div>
-      
-      <p style="margin-top: 20px;"><strong>Virtualisation (Proxmox)</strong></p>
-      <div class="barre-progression">
-        <div class="progress-bar" data-progress="80">80%</div>
-      </div>
+      <p style="margin-top:20px"><strong>Administration Windows Server</strong></p>
+      <div class="barre-progression"><div class="progress-bar" data-progress="75">75%</div></div>
+      <p style="margin-top:20px"><strong>Administration Linux</strong></p>
+      <div class="barre-progression"><div class="progress-bar" data-progress="70">70%</div></div>
+      <p style="margin-top:20px"><strong>Réseaux & Cisco</strong></p>
+      <div class="barre-progression"><div class="progress-bar" data-progress="65">65%</div></div>
+      <p style="margin-top:20px"><strong>Virtualisation (Proxmox)</strong></p>
+      <div class="barre-progression"><div class="progress-bar" data-progress="80">80%</div></div>
     </section>
 
     <section id="technologies">
       <h2>Technologies Maîtrisées 🛠️</h2>
-      <p style="margin-bottom: 25px;">Les outils et technologies que j'utilise au quotidien :</p>
-      
+      <p style="margin-bottom:25px">Les outils et technologies que j'utilise au quotidien :</p>
       <div class="tech-grid">
-        <div class="tech-item">
-          <div class="tech-icon">🪟</div>
-          <p>Windows Server</p>
-        </div>
-        <div class="tech-item">
-          <div class="tech-icon">🐧</div>
-          <p>Linux/Debian</p>
-        </div>
-        <div class="tech-item">
-          <div class="tech-icon">📡</div>
-          <p>Cisco Packet Tracer</p>
-        </div>
-        <div class="tech-item">
-          <div class="tech-icon">💾</div>
-          <p>Proxmox VE</p>
-        </div>
-        <div class="tech-item">
-          <div class="tech-icon">🐳</div>
-          <p>Docker</p>
-        </div>
-        <div class="tech-item">
-          <div class="tech-icon">🌐</div>
-          <p>Apache/LAMP</p>
-        </div>
-        <div class="tech-item">
-          <div class="tech-icon">📊</div>
-          <p>GLPI</p>
-        </div>
-        <div class="tech-item">
-          <div class="tech-icon">☁️</div>
-          <p>Nextcloud</p>
-        </div>
+        <div class="tech-item"><div class="tech-icon">🪟</div><p>Windows Server</p></div>
+        <div class="tech-item"><div class="tech-icon">🐧</div><p>Linux/Debian</p></div>
+        <div class="tech-item"><div class="tech-icon">📡</div><p>Cisco Packet Tracer</p></div>
+        <div class="tech-item"><div class="tech-icon">💾</div><p>Proxmox VE</p></div>
+        <div class="tech-item"><div class="tech-icon">🐳</div><p>Docker</p></div>
+        <div class="tech-item"><div class="tech-icon">🌐</div><p>Apache/LAMP</p></div>
+        <div class="tech-item"><div class="tech-icon">📊</div><p>GLPI</p></div>
+        <div class="tech-item"><div class="tech-icon">☁️</div><p>Nextcloud</p></div>
       </div>
     </section>
 
     <section id="projets">
       <h2>Projets Réalisés</h2>
-      
       <div class="project-card">
         <h3>🖥️ Installation et gestion d'un serveur Windows avec Active Directory</h3>
-        <p>
-          Mise en place d'un contrôleur de domaine Active Directory complet avec configuration des unités organisationnelles,
-          gestion des utilisateurs et groupes, et implémentation de stratégies de groupe (GPO) pour sécuriser et standardiser
-          l'environnement réseau. Ce projet m'a permis de comprendre l'architecture des domaines Windows et la gestion centralisée.
-        </p>
+        <p>Mise en place d'un contrôleur de domaine Active Directory complet avec configuration des unités organisationnelles, gestion des utilisateurs et groupes, et implémentation de stratégies de groupe (GPO) pour sécuriser et standardiser l'environnement réseau.</p>
       </div>
-
       <div class="project-card">
         <h3>🐧 Serveur LAMP sur Debian pour un site web interne</h3>
-        <p>
-          Déploiement d'une infrastructure complète LAMP (Linux, Apache, MySQL, PHP) sur serveur Debian pour héberger
-          un site web interne. Configuration des services web, gestion de la base de données, et mise en place de mesures
-          de sécurité. Ce projet m'a familiarisé avec l'administration Linux et les services web.
-        </p>
+        <p>Déploiement d'une infrastructure complète LAMP (Linux, Apache, MySQL, PHP) sur serveur Debian pour héberger un site web interne. Configuration des services web, gestion de la base de données, et mise en place de mesures de sécurité.</p>
       </div>
-
       <div class="project-card">
         <h3>📊 Mise en place d'une solution de gestion de parc informatique avec GLPI</h3>
-        <p>
-          Installation et configuration de GLPI pour la gestion centralisée du parc informatique. Mise en place du système
-          de ticketing, inventaire automatisé des équipements, gestion des licences et suivi des interventions. Ce projet
-          m'a permis de découvrir les outils de gestion d'infrastructure (ITSM).
-        </p>
+        <p>Installation et configuration de GLPI pour la gestion centralisée du parc informatique. Mise en place du système de ticketing, inventaire automatisé des équipements, gestion des licences et suivi des interventions.</p>
       </div>
     </section>
 
@@ -802,18 +272,12 @@
       <h2>Formations</h2>
       <div class="project-card">
         <h3>🎓 BTS SIO - Spécialité SISR</h3>
-        <p>
-          <strong>Solutions d'Infrastructure, Systèmes et Réseaux</strong><br>
-          Formation spécialisée dans l'administration des systèmes, la gestion des réseaux et la cybersécurité.
-          Acquisition de compétences en virtualisation, administration système, et gestion d'infrastructure.
-        </p>
+        <p><strong>Solutions d'Infrastructure, Systèmes et Réseaux</strong><br>Formation spécialisée dans l'administration des systèmes, la gestion des réseaux et la cybersécurité.</p>
       </div>
-      
       <div class="project-card">
         <h3>📚 Baccalauréat technique F3</h3>
         <p>Formation technique en électronique et automatisme.</p>
       </div>
-      
       <div class="project-card">
         <h3>📖 Brevet d'Études du Premier Cycle (BEPC)</h3>
         <p>Diplôme national sanctionnant la fin de l'enseignement secondaire premier cycle.</p>
@@ -822,8 +286,7 @@
 
     <section id="timeline">
       <h2>Mon Parcours 📅</h2>
-      <p style="margin-bottom: 25px; text-align: center;">Retracez mon évolution académique et professionnelle</p>
-      
+      <p style="margin-bottom:25px;text-align:center">Retracez mon évolution académique et professionnelle</p>
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-content">
@@ -832,7 +295,6 @@
             <p>Formation en Solutions d'Infrastructure, Systèmes et Réseaux</p>
           </div>
         </div>
-
         <div class="timeline-item">
           <div class="timeline-content">
             <span class="date">2024</span>
@@ -840,7 +302,6 @@
             <p>Certification professionnelle en administration système</p>
           </div>
         </div>
-
         <div class="timeline-item">
           <div class="timeline-content">
             <span class="date">2023</span>
@@ -848,7 +309,6 @@
             <p>Formation en électronique et automatisme</p>
           </div>
         </div>
-
         <div class="timeline-item">
           <div class="timeline-content">
             <span class="date">2021</span>
@@ -861,83 +321,127 @@
 
     <section id="certifications">
       <h2>Mes Certifications</h2>
-      <p style="margin-bottom: 25px;">Consultez mes certifications professionnelles :</p>
+      <p style="margin-bottom:25px">Consultez mes certifications professionnelles :</p>
       <div>
         <a href="certification_cursa.pdf" target="_blank" class="download-link">👁️ Consulter Certification CURSA</a>
         <a href="certification.pdf" target="_blank" class="download-link">👁️ Consulter Certification 2</a>
+        <a href="certification_cisco.pdf" target="_blank" class="download-link">👁️ Consulter Certification Cisco</a>
       </div>
     </section>
 
     <section id="cv">
       <h2>Mon CV</h2>
-      <p style="margin-bottom: 25px;">Consultez mon curriculum vitae complet en format PDF :</p>
+      <p style="margin-bottom:25px">Consultez mon curriculum vitae complet en format PDF :</p>
       <a href="cv_laurys.pdf" target="_blank" class="download-link">👁️ Consulter mon CV</a>
     </section>
 
     <section id="telechargements">
       <h2>Téléchargements 📦</h2>
-      <p style="margin-bottom: 30px;">Retrouvez tous mes documents professionnels en un seul endroit :</p>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
-        <div class="project-card" style="text-align: center;">
-          <div style="font-size: 3rem; margin-bottom: 15px;">📄</div>
+      <p style="margin-bottom:30px">Retrouvez tous mes documents professionnels en un seul endroit :</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px">
+        <div class="project-card" style="text-align:center">
+          <div style="font-size:3rem;margin-bottom:15px">📄</div>
           <h3>Curriculum Vitae</h3>
           <p>Mon CV complet avec mes expériences et compétences</p>
-          <a href="cv_laurys.pdf" target="_blank" class="download-link" style="margin-top: 15px;">👁️ Consulter</a>
-          <a href="cv_laurys.pdf" download class="download-link" style="margin-top: 15px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);">⬇️ Télécharger</a>
+          <a href="cv_laurys.pdf" target="_blank" class="download-link" style="margin-top:15px">👁️ Consulter</a>
+          <a href="cv_laurys.pdf" download class="download-link" style="margin-top:15px;background:linear-gradient(135deg,#4CAF50,#45a049)">⬇️ Télécharger</a>
         </div>
-
-        <div class="project-card" style="text-align: center;">
-          <div style="font-size: 3rem; margin-bottom: 15px;">📜</div>
+        <div class="project-card" style="text-align:center">
+          <div style="font-size:3rem;margin-bottom:15px">📜</div>
           <h3>Certification CURSA</h3>
           <p>Certification en administration système</p>
-          <a href="certification_cursa.pdf" target="_blank" class="download-link" style="margin-top: 15px;">👁️ Consulter</a>
-          <a href="certification_cursa.pdf" download class="download-link" style="margin-top: 15px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);">⬇️ Télécharger</a>
+          <a href="certification_cursa.pdf" target="_blank" class="download-link" style="margin-top:15px">👁️ Consulter</a>
+          <a href="certification_cursa.pdf" download class="download-link" style="margin-top:15px;background:linear-gradient(135deg,#4CAF50,#45a049)">⬇️ Télécharger</a>
         </div>
-
-        <div class="project-card" style="text-align: center;">
-          <div style="font-size: 3rem; margin-bottom: 15px;">🎓</div>
+        <div class="project-card" style="text-align:center">
+          <div style="font-size:3rem;margin-bottom:15px">🎓</div>
           <h3>Certification 2</h3>
           <p>Compétences techniques validées</p>
-          <a href="certification.pdf" target="_blank" class="download-link" style="margin-top: 15px;">👁️ Consulter</a>
-          <a href="certification.pdf" download class="download-link" style="margin-top: 15px; background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);">⬇️ Télécharger</a>
+          <a href="certification.pdf" target="_blank" class="download-link" style="margin-top:15px">👁️ Consulter</a>
+          <a href="certification.pdf" download class="download-link" style="margin-top:15px;background:linear-gradient(135deg,#4CAF50,#45a049)">⬇️ Télécharger</a>
         </div>
+        <div class="project-card" style="text-align:center">
+          <div style="font-size:3rem;margin-bottom:15px">📡</div>
+          <h3>Certification Cisco</h3>
+          <p>Certification en réseaux et infrastructure Cisco</p>
+          <a href="certification_cisco.pdf" target="_blank" class="download-link" style="margin-top:15px">👁️ Consulter</a>
+          <a href="certification_cisco.pdf" download class="download-link" style="margin-top:15px;background:linear-gradient(135deg,#4CAF50,#45a049)">⬇️ Télécharger</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="veille">
+      <h2>🔍 Veille Technologique <span class="badge-rss">RSS en direct</span></h2>
+      <p style="margin-bottom:30px">Dans le cadre de mon BTS SIO SISR, j'assure une veille régulière sur la <strong style="color:var(--primary)">virtualisation &amp; infrastructure avec Proxmox</strong>, un sujet directement lié à mon quotidien de formation et à mon projet professionnel. Les articles ci-dessous sont agrégés automatiquement depuis des sources spécialisées.</p>
+
+      <div class="sujet-card">
+        <h3>🖥️ Sujet — Virtualisation &amp; Infrastructure (Proxmox VE / KVM / VMware)</h3>
+        <p><strong>Présentation du sujet :</strong><br>La virtualisation permet de faire tourner plusieurs systèmes d'exploitation isolés sur une seule machine physique. Des solutions comme <strong>Proxmox VE</strong>, VMware ESXi ou Microsoft Hyper-V sont au cœur de toutes les infrastructures informatiques professionnelles. Elles permettent de réduire les coûts matériels, de simplifier la gestion du parc, d'assurer la continuité de service grâce aux sauvegardes et migrations à chaud.</p>
+        <p><strong>Pourquoi ce sujet est lié à mon projet professionnel :</strong><br>Tout au long de ma formation BTS SISR, j'utilise quotidiennement Proxmox VE pour déployer mes machines virtuelles (Windows Server 2022, Debian, Windows 10 Pro) et mes conteneurs LXC. Dans mon projet de créer une entreprise de services informatiques, la virtualisation sera essentielle pour proposer des solutions d'hébergement local économiques et de sauvegarde automatisée à mes futurs clients.</p>
+        <span class="badge-lien">🔗 En lien direct avec mes projets Proxmox, Active Directory &amp; LXC</span>
+      </div>
+
+      <h3 style="margin:28px 0 14px">📌 Sources d'actualité sérieuses</h3>
+      <div class="sources-grid">
+        <div class="source-item">
+          <div class="source-name">🌐 Proxmox Official Blog</div>
+          <div class="source-desc">Blog officiel de Proxmox Server Solutions. Annonces de versions, tutoriels et cas d'usage professionnels.</div>
+          <a href="https://www.proxmox.com/en/news" target="_blank">proxmox.com/en/news ↗</a>
+        </div>
+        <div class="source-item">
+          <div class="source-name">🖥️ Phoronix</div>
+          <div class="source-desc">Tests de performance et actualités Linux, drivers, virtualisation. Référence technique mondiale.</div>
+          <a href="https://www.phoronix.com" target="_blank">phoronix.com ↗</a>
+        </div>
+        <div class="source-item">
+          <div class="source-name">📰 The Register</div>
+          <div class="source-desc">Actualité IT internationale : infrastructure, cloud, virtualisation. Ton sérieux et critique.</div>
+          <a href="https://www.theregister.com" target="_blank">theregister.com ↗</a>
+        </div>
+        <div class="source-item">
+          <div class="source-name">🔧 Virtualization.info</div>
+          <div class="source-desc">Site spécialisé 100% virtualisation : VMware, Hyper-V, KVM, Proxmox, comparatifs et benchmarks.</div>
+          <a href="https://www.virtualization.info" target="_blank">virtualization.info ↗</a>
+        </div>
+        <div class="source-item">
+          <div class="source-name">💬 Forum Proxmox Community</div>
+          <div class="source-desc">Forum officiel Proxmox : aide, retours d'expérience, annonces et discussions techniques.</div>
+          <a href="https://forum.proxmox.com" target="_blank">forum.proxmox.com ↗</a>
+        </div>
+        <div class="source-item">
+          <div class="source-name">📊 DistroWatch</div>
+          <div class="source-desc">Suivi de toutes les distributions Linux et systèmes de virtualisation : nouvelles versions.</div>
+          <a href="https://distrowatch.com" target="_blank">distrowatch.com ↗</a>
+        </div>
+      </div>
+
+      <h3 style="margin:32px 0 8px">📡 Agrégateur RSS — Actualités en direct</h3>
+      <p class="last-update" id="last-update-time">Chargement des articles en cours...</p>
+      <div class="rss-tabs">
+        <button class="rss-tab active" onclick="switchTab(this,'feed-proxmox')">💾 Proxmox &amp; Virtualisation</button>
+        <button class="rss-tab" onclick="switchTab(this,'feed-infra')">🔧 Infrastructure IT</button>
+      </div>
+      <div id="feed-proxmox" class="rss-feed active">
+        <div class="rss-loading"><span class="spinner"></span>Chargement des articles...</div>
+      </div>
+      <div id="feed-infra" class="rss-feed">
+        <div class="rss-loading"><span class="spinner"></span>Chargement des articles...</div>
       </div>
     </section>
 
     <section id="vision">
       <h2>Ma Vision pour l'Avenir 🚀</h2>
-      <p>
-        Dans 5 à 10 ans, j'ai un rêve assez simple mais qui me tient vraiment à cœur : créer ma propre petite 
-        entreprise dans mon pays. Rien de trop compliqué, juste quelque chose qui a du sens pour moi.
-      </p>
-      <p>
-        L'idée, c'est de mettre à profit tout ce que j'apprends en réseaux et en administration système pour 
-        aider les entreprises locales. Je veux proposer des services d'installation et de maintenance de réseaux 
-        informatiques, du support technique, bref, tout ce qui peut aider les gens à mieux utiliser la technologie.
-      </p>
-      <p>
-        Pourquoi dans mon pays ? Parce que je connais les besoins, je parle la langue, et je sais qu'il y a 
-        beaucoup à faire là-bas dans le domaine de l'informatique. Les réseaux, c'est vraiment ma passion, 
-        et je veux partager ça avec ma communauté.
-      </p>
-      <p>
-        Je ne vise pas forcément une grosse entreprise, juste quelque chose de solide où je peux être utile, 
-        créer des emplois et transmettre mes connaissances. Pour l'instant, je me forme, j'apprends un maximum, 
-        et je prépare ce projet tranquillement.
-      </p>
-      <p>
-        C'est ça qui me motive tous les jours : savoir que dans quelques années, je pourrai vraiment faire 
-        la différence avec mes compétences ! 💪
-      </p>
+      <p>Dans 5 à 10 ans, j'ai un rêve assez simple mais qui me tient vraiment à cœur : créer ma propre petite entreprise dans mon pays. Rien de trop compliqué, juste quelque chose qui a du sens pour moi.</p>
+      <p>L'idée, c'est de mettre à profit tout ce que j'apprends en réseaux et en administration système pour aider les entreprises locales. Je veux proposer des services d'installation et de maintenance de réseaux informatiques, du support technique, bref, tout ce qui peut aider les gens à mieux utiliser la technologie.</p>
+      <p>Pourquoi dans mon pays ? Parce que je connais les besoins, je parle la langue, et je sais qu'il y a beaucoup à faire là-bas dans le domaine de l'informatique. Les réseaux, c'est vraiment ma passion, et je veux partager ça avec ma communauté.</p>
+      <p>Je ne vise pas forcément une grosse entreprise, juste quelque chose de solide où je peux être utile, créer des emplois et transmettre mes connaissances. Pour l'instant, je me forme, j'apprends un maximum, et je prépare ce projet tranquillement.</p>
+      <p>C'est ça qui me motive tous les jours : savoir que dans quelques années, je pourrai vraiment faire la différence avec mes compétences ! 💪</p>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <p style="margin-bottom: 25px;">N'hésitez pas à me contacter pour toute opportunité de stage ou projet collaboratif !</p>
-      
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px;">
-        <!-- Coordonnées -->
+      <p style="margin-bottom:25px">N'hésitez pas à me contacter pour toute opportunité de stage ou projet collaboratif !</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:30px">
         <div>
           <h3>📞 Mes coordonnées</h3>
           <div class="contact-links">
@@ -947,17 +451,15 @@
             <p><strong>💬 Telegram</strong> : <a href="https://t.me/LaurysJadiTchikokolo" target="_blank">Laurys Jadi Tchikokolo</a></p>
           </div>
         </div>
-
-        <!-- Formulaire -->
         <div>
           <h3>✉️ Envoyez-moi un message</h3>
-          <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px;">
-            <input type="text" id="name" placeholder="Votre nom" required style="padding: 12px; border-radius: 8px; border: 2px solid var(--primary); background: var(--card-bg); color: var(--card-text); font-size: 1rem;">
-            <input type="email" id="email" placeholder="Votre email" required style="padding: 12px; border-radius: 8px; border: 2px solid var(--primary); background: var(--card-bg); color: var(--card-text); font-size: 1rem;">
-            <textarea id="message" placeholder="Votre message" rows="5" required style="padding: 12px; border-radius: 8px; border: 2px solid var(--primary); background: var(--card-bg); color: var(--card-text); font-size: 1rem; resize: vertical;"></textarea>
-            <button type="submit" class="download-link" style="border: none; cursor: pointer; font-size: 1rem;">📤 Envoyer</button>
+          <form id="contactForm" style="display:flex;flex-direction:column;gap:15px">
+            <input type="text" id="name" placeholder="Votre nom" required style="padding:12px;border-radius:8px;border:2px solid var(--primary);background:var(--card-bg);color:var(--card-text);font-size:1rem">
+            <input type="email" id="email" placeholder="Votre email" required style="padding:12px;border-radius:8px;border:2px solid var(--primary);background:var(--card-bg);color:var(--card-text);font-size:1rem">
+            <textarea id="message" placeholder="Votre message" rows="5" required style="padding:12px;border-radius:8px;border:2px solid var(--primary);background:var(--card-bg);color:var(--card-text);font-size:1rem;resize:vertical"></textarea>
+            <button type="submit" class="download-link" style="border:none;cursor:pointer;font-size:1rem">📤 Envoyer</button>
           </form>
-          <p id="formMessage" style="margin-top: 15px; display: none;"></p>
+          <p id="formMessage" style="margin-top:15px;display:none"></p>
         </div>
       </div>
     </section>
@@ -966,182 +468,196 @@
       <h2>Mes Loisirs</h2>
       <div class="loisirs">
         <div class="loisir-item">
-          <img src="imsport.jpg" alt="Sport" />
+          <img src="imsport.jpg" alt="Sport"/>
           <h3>⚽ Sport</h3>
-          <p>
-            Je fais du sport plusieurs fois par semaine, alternant entre football, course à pied et d'autres 
-            activités physiques pour rester en forme et maintenir un équilibre vie personnelle/études.
-          </p>
+          <p>Je fais du sport plusieurs fois par semaine, alternant entre football, course à pied et d'autres activités physiques pour rester en forme et maintenir un équilibre vie personnelle/études.</p>
         </div>
         <div class="loisir-item">
-          <img src="imjeux.jpg" alt="Jeux vidéos" />
+          <img src="imjeux.jpg" alt="Jeux vidéos"/>
           <h3>🎮 Jeux vidéos</h3>
-          <p>
-            J'aime jouer à des jeux vidéo, que ce soit seul ou avec des amis. J'apprécie particulièrement 
-            les jeux d'aventure et les jeux d'équipe qui développent la stratégie et la collaboration.
-          </p>
+          <p>J'aime jouer à des jeux vidéo, que ce soit seul ou avec des amis. J'apprécie particulièrement les jeux d'aventure et les jeux d'équipe qui développent la stratégie et la collaboration.</p>
         </div>
         <div class="loisir-item">
-          <img src="immusica.jpg" alt="Musique" />
+          <img src="immusica.jpg" alt="Musique"/>
           <h3>🎵 Musique</h3>
-          <p>
-            J'aime écouter de la musique dans différents styles, que ce soit pour me détendre ou pour 
-            m'inspirer pendant mes études. La musique est une source de motivation constante.
-          </p>
+          <p>J'aime écouter de la musique dans différents styles, que ce soit pour me détendre ou pour m'inspirer pendant mes études. La musique est une source de motivation constante.</p>
         </div>
       </div>
     </section>
+
   </div>
 
   <footer>
     <p><strong>© 2024 Laurys Jadi Tchikokolo</strong> - Tous droits réservés</p>
-    <p style="margin-top: 10px; font-size: 0.9em; opacity: 0.8;">Portfolio hébergé sur GitHub Pages</p>
-    <p style="margin-top: 15px; font-size: 0.9em;">
-      👁️ <span id="visitorCount">0</span> visiteurs
-    </p>
+    <p style="margin-top:10px;font-size:.9em;opacity:.8">Portfolio hébergé sur GitHub Pages</p>
+    <p style="margin-top:15px;font-size:.9em">👁️ <span id="visitorCount">0</span> visiteurs</p>
   </footer>
 
-  <!-- Bouton retour en haut -->
   <button class="back-to-top" id="backToTop" onclick="scrollToTop()">⬆️</button>
 
   <script>
-    // Theme Toggle Functionality
+    /* ── Thème ── */
     function toggleTheme() {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute('data-theme');
-      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-      
+      var html = document.documentElement;
+      var newTheme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       html.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-      
       updateThemeButton(newTheme);
     }
-
     function updateThemeButton(theme) {
-      const icon = document.querySelector('.theme-icon');
-      const text = document.querySelector('.theme-text');
-      
-      if (theme === 'light') {
-        icon.textContent = '🌙';
-        text.textContent = 'Mode Sombre';
-      } else {
-        icon.textContent = '☀️';
-        text.textContent = 'Mode Clair';
-      }
+      document.querySelector('.theme-icon').textContent = theme === 'light' ? '🌙' : '☀️';
+      document.querySelector('.theme-text').textContent = theme === 'light' ? 'Mode Sombre' : 'Mode Clair';
     }
+    (function() {
+      var saved = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', saved);
+      updateThemeButton(saved);
+    })();
 
-    // Load saved theme on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      // Vérifier d'abord si l'utilisateur a une préférence sauvegardée
-      let savedTheme = localStorage.getItem('theme');
-      
-      // Si pas de préférence sauvegardée, détecter la préférence système
-      if (!savedTheme) {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
-          savedTheme = 'light';
-        } else {
-          savedTheme = 'dark';
-        }
-      }
-      
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      updateThemeButton(savedTheme);
-    });
-
-    // Typewriter Effect
-    const text = "Bienvenue sur mon portfolio";
-    const typewriter = document.getElementById("typewriter");
-    const cursor = document.getElementById("cursor");
-    let i = 0;
-
+    /* ── Typewriter ── */
+    var twText = "Bienvenue sur mon portfolio";
+    var twEl   = document.getElementById("typewriter");
+    var cursor = document.getElementById("cursor");
+    var twIdx  = 0;
     function typeEffect() {
-      if (i < text.length) {
-        typewriter.textContent += text.charAt(i);
-        i++;
+      if (twIdx < twText.length) {
+        twEl.textContent += twText.charAt(twIdx++);
         setTimeout(typeEffect, 100);
       } else {
         cursor.style.display = "none";
       }
     }
+    setTimeout(typeEffect, 500);
 
-    window.onload = function () {
-      setTimeout(typeEffect, 500);
-    };
-
-    // Bouton retour en haut
+    /* ── Retour en haut ── */
     window.addEventListener('scroll', function() {
-      const backToTop = document.getElementById('backToTop');
-      if (window.pageYOffset > 300) {
-        backToTop.classList.add('show');
-      } else {
-        backToTop.classList.remove('show');
-      }
+      document.getElementById('backToTop').classList.toggle('show', window.pageYOffset > 300);
     });
+    function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-
-    // Animation des barres de progression
-    function animateProgressBars() {
-      const progressBars = document.querySelectorAll('.progress-bar');
-      progressBars.forEach(bar => {
-        const progress = bar.getAttribute('data-progress');
-        bar.style.width = progress + '%';
-      });
-    }
-
-    // Observer pour animer les barres quand on arrive sur la section
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateProgressBars();
+    /* ── Barres de progression ── */
+    var progObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          document.querySelectorAll('.progress-bar').forEach(function(b) {
+            b.style.width = b.getAttribute('data-progress') + '%';
+          });
         }
       });
     });
+    var compSec = document.getElementById('competences');
+    if (compSec) progObserver.observe(compSec);
 
-    const competencesSection = document.getElementById('competences');
-    if (competencesSection) {
-      observer.observe(competencesSection);
-    }
-
-    // Formulaire de contact
+    /* ── Formulaire ── */
     document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const message = document.getElementById('message').value;
-      
-      const formMessage = document.getElementById('formMessage');
-      formMessage.style.display = 'block';
-      formMessage.style.color = 'var(--primary)';
-      formMessage.textContent = '✅ Message envoyé ! Je vous répondrai bientôt.';
-      
-      // Réinitialiser le formulaire
-      document.getElementById('contactForm').reset();
-      
-      // Masquer le message après 5 secondes
-      setTimeout(() => {
-        formMessage.style.display = 'none';
-      }, 5000);
+      var msg = document.getElementById('formMessage');
+      msg.style.display = 'block';
+      msg.style.color = 'var(--primary)';
+      msg.textContent = '✅ Message envoyé ! Je vous répondrai bientôt.';
+      this.reset();
+      setTimeout(function() { msg.style.display = 'none'; }, 5000);
     });
 
-    // Compteur de visiteurs
-    function updateVisitorCount() {
-      let count = localStorage.getItem('visitorCount');
-      if (!count) {
-        count = Math.floor(Math.random() * 500) + 100; // Commence entre 100 et 600
-      }
-      count = parseInt(count) + 1;
-      localStorage.setItem('visitorCount', count);
-      document.getElementById('visitorCount').textContent = count;
+    /* ── Compteur visiteurs ── */
+    var cnt = parseInt(localStorage.getItem('visitorCount')) || (Math.floor(Math.random() * 500) + 100);
+    cnt++;
+    localStorage.setItem('visitorCount', cnt);
+    document.getElementById('visitorCount').textContent = cnt;
+
+    /* ── VEILLE RSS ── */
+    var FEEDS_PROXMOX = [
+      { url: 'https://www.phoronix.com/rss.php',                                   source: 'Phoronix' },
+      { url: 'https://www.theregister.com/software/virtualization/headlines.atom', source: 'The Register' }
+    ];
+    var FEEDS_INFRA = [
+      { url: 'https://www.theregister.com/infrastructure/headlines.atom', source: 'The Register Infra' },
+      { url: 'https://distrowatch.com/dwres.php?resource=feed',           source: 'DistroWatch' }
+    ];
+
+    function rssUrl(feed) {
+      return 'https://api.allorigins.win/get?url=' + encodeURIComponent(feed);
     }
-    
-    updateVisitorCount();
+
+    function cleanText(str) {
+      var d = document.createElement('div');
+      d.innerHTML = str || '';
+      return (d.textContent || d.innerText || '').trim();
+    }
+
+    function formatDate(str) {
+      if (!str) return '';
+      try { return new Date(str).toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' }); }
+      catch(e) { return ''; }
+    }
+
+    function fetchRSS(feedConfig) {
+      return fetch(rssUrl(feedConfig.url))
+        .then(function(r) { return r.json(); })
+        .then(function(json) {
+          if (!json.contents) return [];
+          var parser = new DOMParser();
+          var xml = parser.parseFromString(json.contents, 'text/xml');
+          var isAtom = !!xml.querySelector('feed');
+          var items  = Array.from(xml.querySelectorAll(isAtom ? 'entry' : 'item')).slice(0, 6);
+          return items.map(function(item) {
+            var title = cleanText((item.querySelector('title') || {}).textContent || '');
+            var link  = isAtom
+              ? ((item.querySelector('link') || {}).getAttribute('href') || (item.querySelector('link') || {}).textContent || '#')
+              : ((item.querySelector('link') || {}).textContent || '#');
+            var desc  = cleanText(
+              ((item.querySelector('description') || {}).textContent) ||
+              ((item.querySelector('summary') || {}).textContent) ||
+              ((item.querySelector('content') || {}).textContent) || ''
+            ).substring(0, 150) + '…';
+            var pub = ((item.querySelector('pubDate') || {}).textContent) ||
+                      ((item.querySelector('updated')  || {}).textContent) ||
+                      ((item.querySelector('published') || {}).textContent) || '';
+            return { title: title, link: link, desc: desc, date: formatDate(pub), source: feedConfig.source };
+          });
+        })
+        .catch(function() { return []; });
+    }
+
+    function renderFeed(articles, containerId) {
+      var el = document.getElementById(containerId);
+      if (!articles.length) {
+        el.innerHTML = '<div class="rss-error">⚠️ Impossible de charger les articles pour le moment.<br>Consultez directement : <a href="https://www.phoronix.com" target="_blank">Phoronix</a> · <a href="https://www.theregister.com" target="_blank">The Register</a> · <a href="https://forum.proxmox.com" target="_blank">Forum Proxmox</a></div>';
+        return;
+      }
+      el.innerHTML = '<div class="rss-articles">' + articles.map(function(a) {
+        return '<div class="article-card">'
+          + '<span class="article-source">📰 ' + a.source + '</span>'
+          + '<div class="article-title">' + a.title + '</div>'
+          + '<div class="article-desc">' + a.desc + '</div>'
+          + '<div class="article-date">📅 ' + a.date + '</div>'
+          + '<a class="lire-plus" href="' + a.link + '" target="_blank" rel="noopener">Lire l\'article complet →</a>'
+          + '</div>';
+      }).join('') + '</div>';
+    }
+
+    function loadVeille() {
+      Promise.all(FEEDS_PROXMOX.map(fetchRSS)).then(function(results) {
+        var articles = [].concat.apply([], results).slice(0, 9);
+        renderFeed(articles, 'feed-proxmox');
+      });
+      Promise.all(FEEDS_INFRA.map(fetchRSS)).then(function(results) {
+        var articles = [].concat.apply([], results).slice(0, 9);
+        renderFeed(articles, 'feed-infra');
+      });
+      document.getElementById('last-update-time').textContent =
+        'Dernière mise à jour : ' + new Date().toLocaleString('fr-FR');
+    }
+
+    function switchTab(btn, feedId) {
+      document.querySelectorAll('.rss-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.rss-feed').forEach(function(f) { f.classList.remove('active'); });
+      btn.classList.add('active');
+      document.getElementById(feedId).classList.add('active');
+    }
+
+    loadVeille();
+    setInterval(loadVeille, 30 * 60 * 1000);
   </script>
 </body>
 </html>
